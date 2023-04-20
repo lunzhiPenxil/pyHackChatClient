@@ -14,7 +14,7 @@ if __name__ == '__main__':
     webview.create_window(
         title=title,
         url=url,
-        background_color='#00A0EA'
+        background_color='#2A2A49'
     )
     webview.start(
         private_mode=False
