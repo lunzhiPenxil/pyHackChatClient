@@ -1,0 +1,31 @@
+name: CI-Packing-all
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-win64-release:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11.0
+        cache: pip
+        architecture: x64
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r ./requirements.txt
+    - name: Run packing
+      run: |
+        pyinstaller ./main.spec
+    - name: Run artifact
+      run: |
+        mkdir OlivOSForumClient
+        cp ./dist/main.exe ./OlivOSForumClient/OlivOSForumClient.exe
+    - name: Packing OlivOSForumClient
+      uses: actions/upload-artifact@v3
+      with:
+        name: OlivOSForumClient-Win
+        path: ./OlivOSForumClient
