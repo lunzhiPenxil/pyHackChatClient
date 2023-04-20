@@ -22,10 +22,10 @@ jobs:
         pyinstaller ./main.spec
     - name: Run artifact
       run: |
-        mkdir OlivOSForumClient
-        cp ./dist/main.exe ./OlivOSForumClient/OlivOSForumClient.exe
-    - name: Packing OlivOSForumClient
+        mkdir pyHackChatClient
+        cp ./dist/main.exe ./pyHackChatClient/pyHackChatClient.exe
+    - name: Packing pyHackChatClient
       uses: actions/upload-artifact@v3
       with:
-        name: OlivOSForumClient-Win
-        path: ./OlivOSForumClient
+        name: pyHackChatClient-Win
+        path: ./pyHackChatClient
